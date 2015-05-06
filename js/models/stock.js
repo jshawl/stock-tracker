@@ -104,3 +104,23 @@ var data = [
 ];
 
 // define your Stock model here
+
+var Stock = function( datum, numShares ){
+  //symbol
+  this.symbol = datum.Symbol
+  //price
+  this.price = datum.LastPrice
+  //company name
+  this.name = datum.Name
+  this.numShares = numShares
+  //total value
+  this.totalValue = this.price * this.numShares
+}
+Stock.lookup = function( symbol ){
+  for( var i = 0; i < data.length; i++ ){
+    var datum = data[i]
+    if( symbol === datum.Symbol ){
+      return datum
+    }
+  }
+}
